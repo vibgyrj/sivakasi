@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPI Dynamic Payment</title>
+</head>
+<body>
+
+    <!-- A simple button to trigger the payment -->
+    <button onclick="payViaUPI()">Pay Now</button>
+
+    <script>
+        function payViaUPI() {
+            // 1. Define your payment variables
+            const upiId = "kosaksipasappugazh@okhdfcbank";
+            const payeeName = "Sivakasi";
+            const amount = 250.00; // This can come from an input field, database, or cart total
+            const currency = "INR";
+            const transactionNote = "Website Order";
+
+            // 2. Build the dynamic UPI URL string
+            // encodeURIComponent ensures spaces and special characters don't break the URL
+            const upiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payeeName)}&am=${amount}&cu=${currency}&tn=${encodeURIComponent(transactionNote)}`;
+
+            // 3. Redirect the browser to open the UPI app
+            window.location.href = upiUrl;
+        }
+    </script>
+
+</body>
+</html>
